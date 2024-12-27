@@ -19,3 +19,25 @@ int main(){
     cout << "Min = " << B[5];
     return 0;
 }
+
+void stat(const double A[], int N, double B[]) {
+    double sum = 0;
+    double sumpower = 0;
+    double mult = 1;
+    double oneoverx = 0;
+    double max = A[0], min = A[0];
+    for(int i = 0; i < N; i++){
+        sum += A[i];
+        sumpower += pow(A[i],2);
+        mult *= A[i];
+        oneoverx += 1/A[i];
+        if(A[i] > max) max = A[i];
+        if(A[i] < min) min = A[i];
+    }
+    B[0] = sum/N;
+    B[1] = sqrt(sumpower/N - pow(B[0],2) );
+    B[2] = pow(mult,1.0/N);
+    B[3] = N/oneoverx;
+    B[4] = max;
+    B[5] = min;
+}
